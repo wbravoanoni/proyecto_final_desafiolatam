@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 
 
 
@@ -17,52 +17,39 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link
-                to="/hombre"
-                className="nav-link active ms-3 text-decoration-none"
-                >
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  to="/hombre" >
                   Hombre
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-              <Link
-                to="/mujer"
-                className="nav-link active ms-3 text-decoration-none"
-                >
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  to="/mujer" >
                   Mujer
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-              <Link
-                to="/ninos"
-                className="nav-link active ms-3 text-decoration-none"
-                >
-                  Niños
-                </Link>
-              </li>
-              <li className="nav-item">
-              <Link
-                to="/equipamiento"
-                className="nav-link active ms-3 text-decoration-none"
-                >
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  to="/equipamiento" >
                   Equipamiento
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-              <Link
-                to="/calzado"
-                className="nav-link active ms-3 text-decoration-none"
-                >
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  to="/calzado" >
                   Calzado
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-              <Link
-                to="/ofertas"
-                className="nav-link active ms-3 text-decoration-none"
-                >
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  to="/ofertas" >
                   Ofertas
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
