@@ -2,12 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
-import Navbar from './components/Navbar';
-import Carousel from './components/Carousel';
-import Categorias from './components/Categorias';
-import ProductosNuevos from './components/ProductosNuevos';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PaginaPrincipal from './pages/PaginaPrincipal';
+import Pagina404 from './pages/Pagina404';
 
 
 
@@ -16,17 +13,13 @@ function App() {
 
   return (
     <>
-      <div>
-      <Navbar />
-      <div>
-        <div className="container-fluid">
-          <Carousel />
-          <Categorias/>
-          <ProductosNuevos/>
-          <Footer/>
-        </div>
-      </div>
-    </div>
+
+      <Routes>
+        <Route path="/" element={<PaginaPrincipal />} />
+        <Route path="*" element={<Pagina404 />} />
+      </Routes>
+
+     
     </>
   )
 }
