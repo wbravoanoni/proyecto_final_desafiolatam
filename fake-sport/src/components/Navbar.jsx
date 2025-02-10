@@ -51,11 +51,20 @@ const Navbar = () => {
                   Ofertas
                 </NavLink>
               </li>
+            </ul>
+            <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <NavLink
-                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
                   to="/ingresar" >
                   Ingresar
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-cart" : "nav-link active ms-3 text-decoration-none bi bi-cart") }
+                  to="/carrito" >
+                  Carrito
                 </NavLink>
               </li>
             </ul>
