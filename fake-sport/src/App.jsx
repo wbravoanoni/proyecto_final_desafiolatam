@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaginaPrincipal from './pages/PaginaPrincipal';
 import Pagina404 from './pages/Pagina404';
 import CategoriasProductos from './pages/CategoriasProductos';
+import Ingresar from './pages/Ingresar';
+
+
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 
 
@@ -14,14 +18,12 @@ function App() {
 
   return (
     <>
-
       <Routes>
         <Route path="/" element={<PaginaPrincipal />} />
         <Route path="/categoria/:categoriaId" element={<CategoriasProductos />} />
+        <Route path="/ingresar" element={<Ingresar />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
-
-     
     </>
   )
 }

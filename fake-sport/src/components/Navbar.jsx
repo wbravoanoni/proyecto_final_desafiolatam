@@ -51,6 +51,13 @@ const Navbar = () => {
                   Ofertas
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
+                  to="/ingresar" >
+                  Ingresar
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

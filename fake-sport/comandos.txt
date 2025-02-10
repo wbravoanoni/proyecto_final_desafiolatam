@@ -1,3 +1,6 @@
 
 #instalar packete rutas
 npm install react-router-dom@6
+
+#instalar bootrap iconos
+npm install bootstrap-icons
