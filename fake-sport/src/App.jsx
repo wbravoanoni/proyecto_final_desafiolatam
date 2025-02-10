@@ -5,6 +5,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaginaPrincipal from './pages/PaginaPrincipal';
 import Pagina404 from './pages/Pagina404';
+import CategoriasProductos from './pages/CategoriasProductos';
 
 
 
@@ -16,6 +17,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<PaginaPrincipal />} />
+        <Route path="/categoria/:categoriaId" element={<CategoriasProductos />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
 

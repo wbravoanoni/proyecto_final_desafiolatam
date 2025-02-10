@@ -19,35 +19,35 @@ const Navbar = () => {
               <li className="nav-item">
                 <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
-                  to="/hombre" >
+                  to="/categoria/hombre" >
                   Hombre
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
-                  to="/mujer" >
+                  to="/categoria/mujer" >
                   Mujer
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
-                  to="/equipamiento" >
+                  to="/categoria/equipamiento" >
                   Equipamiento
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
-                  to="/calzado" >
+                  to="/categoria/calzado" >
                   Calzado
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link active ms-3 text-decoration-none") }
-                  to="/ofertas" >
+                  to="/categoria/ofertas" >
                   Ofertas
                 </NavLink>
               </li>
