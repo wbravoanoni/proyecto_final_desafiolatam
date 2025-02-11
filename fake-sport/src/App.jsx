@@ -9,10 +9,10 @@ import CategoriasProductos from './pages/CategoriasProductos';
 import Ingresar from './pages/Ingresar';
 import Dashboard from './pages/Dashboard';
 import VerUsuarios from './pages/usuarios/VerUsuarios';
+import VerCategorias from './pages/usuarios/VerCategorias';
+import VerProductos from './pages/usuarios/VerProductos';
 
 import "bootstrap-icons/font/bootstrap-icons.css";
-
-
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +25,8 @@ function App() {
         <Route path="/ingresar" element={<Ingresar />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/verUsuarios" element={<VerUsuarios />} />
+        <Route path="/verCategorias" element={<VerCategorias />} />
+        <Route path="/verProductos" element={<VerProductos />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
     </>

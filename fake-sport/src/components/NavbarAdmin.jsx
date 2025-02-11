@@ -68,10 +68,10 @@ const NavbarAdmin = () => {
                   <a class="dropdown-item" href="/verUsuarios">Crear Usuarios</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/dashboard/categorias">Categorías</a>
+                  <a class="dropdown-item" href="/verCategorias">Categorías</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/dashboard/productos">Productos</a>
+                  <a class="dropdown-item" href="/verProductos">Productos</a>
                 </li>
               </ul>
             </li>
