@@ -4,13 +4,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { Link,NavLink } from "react-router-dom";
 
-
-
 const Navbar = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">My React App</a>
+          
+          <a className="navbar-brand" href="/"><img src="../assets/images/logo.webp" alt="" /></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="/">
             <span className="navbar-toggler-icon"></span>
           </button>

@@ -15,7 +15,7 @@ const NavbarAdmin = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">My React App</a>
+          <a className="navbar-brand" href="/">Fake - Sport</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="/">
             <span className="navbar-toggler-icon"></span>
           </button>
