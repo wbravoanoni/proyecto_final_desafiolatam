@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavbarAdmin from "../components/NavbarAdmin";
-import Footer from "../components/Footer";
+import NavbarAdmin from "../../components/NavbarAdmin";
+import Footer from "../../components/Footer";
 
-const Dashboard = () => {
+const VerUsuarios = () => {
   const navigate = useNavigate();
   const isAuthenticated =
     localStorage.getItem("isAuthenticated") || sessionStorage.getItem("isAuthenticated");
@@ -24,15 +24,11 @@ const Dashboard = () => {
     <div>
       <NavbarAdmin />
       <div className="container mt-5 text-center">
-        <h2>Bienvenido al Dashboard</h2>
-        <p>Has iniciado sesión correctamente.</p>
-        <button className="btn btn-danger" onClick={handleLogout}>
-          <i className="bi bi-box-arrow-right"></i> Cerrar Sesión
-        </button>
+        <h2 className="pt-5">Crear Usuarios</h2>
       </div>
       <Footer />
     </div>
   );
 };
 
-export default Dashboard;
+export default VerUsuarios;

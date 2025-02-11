@@ -9,10 +9,10 @@ const Ingresar = () => {
   const navigate = useNavigate();
 
   const handleLogin = (email, password) => {
-    if (email === "admin@admin.com" && password === "123456") {
+    if (email === "admin@correo.cl" && password === "123456") {
       localStorage.setItem("isAuthenticated", "true"); 
       navigate("/dashboard");
-    } else {
+    }else {
       setError("Correo o contraseña incorrectos");
     }
   };
