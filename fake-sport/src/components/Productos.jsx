@@ -176,7 +176,7 @@ const Productos = () => {
     },
     ,
     {
-      id: 21,
+      id: 22,
       image: "https://cdn.pixabay.com/photo/2020/12/10/11/34/ducks-5820051_640.jpg",
       text: "Explorando la naturaleza con mochilas listas.",
       precio : 7800,
@@ -185,7 +185,7 @@ const Productos = () => {
     },
     ,
     {
-      id: 21,
+      id: 23,
       image: "https://cdn.pixabay.com/photo/2020/12/10/11/34/ducks-5820051_640.jpg",
       text: "Explorando la naturaleza con mochilas listas.",
       precio : 7800,
@@ -194,7 +194,7 @@ const Productos = () => {
     },
     ,
     {
-      id: 21,
+      id: 24,
       image: "https://cdn.pixabay.com/photo/2020/12/10/11/34/ducks-5820051_640.jpg",
       text: "Explorando la naturaleza con mochilas listas.",
       precio : 7800,

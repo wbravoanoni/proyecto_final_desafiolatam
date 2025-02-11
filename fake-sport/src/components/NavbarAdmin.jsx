@@ -6,6 +6,12 @@ import { Link,NavLink } from "react-router-dom";
 
 const NavbarAdmin = () => {
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    sessionStorage.removeItem("isAuthenticated");
+    navigate("/ingresar");
+  };
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div className="container-fluid">
@@ -52,7 +58,7 @@ const NavbarAdmin = () => {
               </li>
             </ul>
             <ul className="navbar-nav ms-auto">
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
               <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link dropdown-toggle active ms-3 text-decoration-none fw-bold menu-activo" : "nav-link dropdown-toggle active ms-3 text-decoration-none") }
                   to="/dashboard" 
@@ -63,15 +69,21 @@ const NavbarAdmin = () => {
                   aria-expanded="false">
                   Administrador
               </NavLink>
-              <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+              <ul className="dropdown-menu" aria-labelledby="adminDropdown">
                 <li>
-                  <a class="dropdown-item" href="/verUsuarios">Crear Usuarios</a>
+                  <a className="dropdown-item" href="/dashboard">Dashboard</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/verCategorias">Categorías</a>
+                  <a className="dropdown-item" href="/verUsuarios">Crear Usuarios</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/verProductos">Productos</a>
+                  <a className="dropdown-item" href="/verCategorias">Categorías</a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="/verProductos">Productos</a>
+                </li>
+                <li>
+                  <a onClick={handleLogout} className="dropdown-item" href="/verProductos">Cerra Sesion</a>
                 </li>
               </ul>
             </li>

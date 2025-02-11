@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import VerUsuarios from './pages/usuarios/VerUsuarios';
 import VerCategorias from './pages/usuarios/VerCategorias';
 import VerProductos from './pages/usuarios/VerProductos';
+import FormularioUsuarios from './pages/usuarios/FormularioUsuarios';
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/ingresar" element={<Ingresar />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/verUsuarios" element={<VerUsuarios />} />
+        <Route path="/Usuarios" element={<FormularioUsuarios />} />
         <Route path="/verCategorias" element={<VerCategorias />} />
         <Route path="/verProductos" element={<VerProductos />} />
         <Route path="*" element={<Pagina404 />} />

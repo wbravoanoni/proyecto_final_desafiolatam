@@ -4,7 +4,7 @@ import NavbarAdmin from "../../components/NavbarAdmin";
 import Footer from "../../components/Footer";
 import TablaUsuarios from "../../components/TablaUsuarios";
 
-const VerUsuarios = () => {
+const AgregarUsuarios = () => {
   const navigate = useNavigate();
   const isAuthenticated =
     localStorage.getItem("isAuthenticated") || sessionStorage.getItem("isAuthenticated");
@@ -14,19 +14,13 @@ const VerUsuarios = () => {
       navigate("/ingresar"); 
     }
   }, [isAuthenticated, navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    sessionStorage.removeItem("isAuthenticated");
-    navigate("/ingresar");
-  };
-
+  
   return (
     <div>
       <NavbarAdmin />
       <div className="container mt-3 text-center">
-        <h2 className="pt-5">Registros de Usuarios</h2>
-        <p className="text-start"><a href="Usuarios" className="mt-3 btn btn-danger">Agregar usuario</a></p>
+        <h2 className="pt-5">Crear Usuarios</h2>
+        <p className="text-start"><button className="mt-3 btn btn-danger">Agregar usuario</button></p>
       </div>
       <TablaUsuarios/>
       <Footer />
@@ -34,4 +28,4 @@ const VerUsuarios = () => {
   );
 };
 
-export default VerUsuarios;
+export default AgregarUsuarios;

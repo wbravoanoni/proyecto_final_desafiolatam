@@ -4,3 +4,6 @@ npm install react-router-dom@6
 
 #instalar bootrap iconos
 npm install bootstrap-icons
+
+#react table
+npm install @tanstack/react-table
