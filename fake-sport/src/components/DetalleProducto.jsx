@@ -2,10 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import cardsData from '../assets/info/productos'
 
-const Productos = () => {
+const DetalleProducto = () => {
     const { categoriaId } = useParams();
   const productosFiltrados = cardsData.filter(
-    (producto) => producto.categoria === categoriaId
+    (producto) => producto.id === categoriaId
   );
 
   return (
@@ -80,7 +80,7 @@ const Productos = () => {
           {productosFiltrados.map((card) => (
             <div className="col-md-4 mb-4" key={card.id}>
               <div className="card">
-                <a href={`/productos/${card.id}`}>
+                <a href="">
                     <img
                     src={card.image}
                     className="card-img-top"
@@ -118,4 +118,4 @@ const Productos = () => {
   );
 };
 
-export default Productos;
+export default DetalleProducto;

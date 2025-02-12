@@ -13,6 +13,8 @@ import VerCategorias from './pages/categorias/VerCategorias';
 import VerProductos from './pages/usuarios/VerProductos';
 import FormularioUsuarios from './pages/usuarios/FormularioUsuarios';
 import FormularioCategorias from './pages/categorias/FormularioCategorias';
+import DetalleProducto from './pages/DetalleProducto';
+
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -31,6 +33,7 @@ function App() {
         <Route path="/verCategorias" element={<VerCategorias />} />
         <Route path="/Categorias" element={<FormularioCategorias />} />
         <Route path="/verProductos" element={<VerProductos />} />
+        <Route path="/productos/:productoid" element={<DetalleProducto />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
     </>
