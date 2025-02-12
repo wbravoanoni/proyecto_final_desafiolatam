@@ -9,9 +9,10 @@ import CategoriasProductos from './pages/CategoriasProductos';
 import Ingresar from './pages/Ingresar';
 import Dashboard from './pages/Dashboard';
 import VerUsuarios from './pages/usuarios/VerUsuarios';
-import VerCategorias from './pages/usuarios/VerCategorias';
+import VerCategorias from './pages/categorias/VerCategorias';
 import VerProductos from './pages/usuarios/VerProductos';
 import FormularioUsuarios from './pages/usuarios/FormularioUsuarios';
+import FormularioCategorias from './pages/categorias/FormularioCategorias';
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/verUsuarios" element={<VerUsuarios />} />
         <Route path="/Usuarios" element={<FormularioUsuarios />} />
         <Route path="/verCategorias" element={<VerCategorias />} />
+        <Route path="/Categorias" element={<FormularioCategorias />} />
         <Route path="/verProductos" element={<VerProductos />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
