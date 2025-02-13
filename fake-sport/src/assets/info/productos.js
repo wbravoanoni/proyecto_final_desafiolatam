@@ -6,6 +6,10 @@ const productos = [
       precio : 13000,
       descuento: 10,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 2,
@@ -14,6 +18,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 3,
@@ -22,6 +30,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 4,
@@ -30,6 +42,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 5,
@@ -38,6 +54,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 6,
@@ -46,6 +66,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 7,
@@ -54,6 +78,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 8,
@@ -62,6 +90,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 9,
@@ -70,6 +102,10 @@ const productos = [
       precio : 13000,
       descuento: 0,
       categoria: 'hombre',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 10,
@@ -78,6 +114,10 @@ const productos = [
       precio : 8000,
       descuento: 0,
       categoria: 'mujer',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 11,
@@ -86,6 +126,10 @@ const productos = [
       precio : 15000,
       descuento: 20,
       categoria: 'mujer',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 12,
@@ -94,6 +138,10 @@ const productos = [
       precio : 18000,
       descuento: 0,
       categoria: 'mujer',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 13,
@@ -102,6 +150,10 @@ const productos = [
       precio : 11000,
       descuento: 15,
       categoria: 'mujer',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 14,
@@ -110,6 +162,10 @@ const productos = [
       precio : 6500,
       descuento: 10,
       categoria: 'mujer',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 15,
@@ -118,6 +174,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'mujer',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 16,
@@ -126,6 +186,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'equipamiento',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 17,
@@ -134,6 +198,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'equipamiento',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 18,
@@ -142,6 +210,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'equipamiento',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 19,
@@ -150,7 +222,11 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'calzado',
-    },,
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
+    },
     {
       id: 20,
       image: "https://cdn.pixabay.com/photo/2019/08/20/02/13/boots-4417595_640.jpg",
@@ -158,6 +234,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'calzado',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     {
       id: 21,
@@ -166,6 +246,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'calzado',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     ,
     {
@@ -175,6 +259,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'ofertas',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     ,
     {
@@ -184,6 +272,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'ofertas',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
     ,
     {
@@ -193,6 +285,10 @@ const productos = [
       precio : 7800,
       descuento: 20,
       categoria: 'ofertas',
+      marca: 'Marca Propia',
+      color: 'negro',
+      talla: 'L',
+      descripcion : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto accusamus, quisquam asperiores praesentium, et officiis tempora ex aliquid ab, cupiditate id reiciendis illum consequatur consequuntur sapiente officia nemo cum eveniet!'
     },
   ];
 

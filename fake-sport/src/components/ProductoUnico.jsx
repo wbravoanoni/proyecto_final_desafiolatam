@@ -11,39 +11,58 @@ const ProductoUnico = () => {
   return (
         <div className="row py-5">
             {productosFiltrados.map((card) => (
-            <div className="col-md-7 mb-4" key={card.id}>
-                <div className="card">
-                <a href="">
-                    <img
-                    src={card.image}
-                    className="card-img-top"
-                    alt="Imagen de excursión"
-                    />
-                </a>
-                <div className="card-body">
-                    <p className="card-text">{card.text}</p>
-                    
-                    <p>
-            {card.descuento > 0 ? (
-                <>
-                    <span className="text-decoration-line-through text-danger">
-                        ${card.precio.toLocaleString("es-CL")}
-                    </span>{" "}
-                    <span>
-                        ${Math.round(card.precio * (1 - card.descuento / 100)).toLocaleString("es-CL")}
-                    </span>
-                </>
-                ) : (
-                    <span>$
-                    {Math.round(
-                        card.precio * (1 - card.descuento / 100)
-                    ).toLocaleString("es-CL")}</span>
-                )}
+            <div className="row py-5">
+                <div className="col-7 mb-4" key={card.id}>
+                    <div className="card">
+                    <h2 className="my-3">{card.text}</h2>
+                    <a href="">
+                        <img
+                        src={card.image}
+                        className="card-img-top"
+                        alt="Imagen de excursión"
+                        />
+                    </a>
+                    <div className="card-body">
+                       
+                    </div>
+                    </div>
+                </div>
+                <div className="col-5 mb-4">
+                <p>
+                {card.descuento > 0 ? (
+                    <>
+                        <span className="text-decoration-line-through text-danger h5">
+                            ${card.precio.toLocaleString("es-CL")}
+                        </span>{" "}
+                        <span className="h3">
+                            ${Math.round(card.precio * (1 - card.descuento / 100)).toLocaleString("es-CL")}
+                        </span>
+                        <span className="ps-2 h6">Descuento: {card.descuento} %</span>
+                    </>
+                    ) : (
+                        <span className="h5">$
+                        {Math.round(
+                            card.precio * (1 - card.descuento / 100)
+                        ).toLocaleString("es-CL")}</span>
+                    )}
                     </p>
+
+                    <p className="fw-bold text-start">Color:</p>
+                    <p className="text-start">{card.color}</p>
+                    <p className="fw-bold text-start">Talla: </p>
+                        <div className="d-flex justify-content-center pb-5">
+                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>S</div>
+                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>M</div>
+                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>L</div>
+                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>XL</div>
+                        </div>
+                        <hr />
+                        <p><button className="btn btn-dark w-100">Comprar</button></p>
                 </div>
-                <p><button className="btn btn-dark">Comprar</button></p>
-                </div>
+                <h4 className="text-start ps-5">Descripción:</h4>
+                <p className="card-text">{card.descripcion}</p>    
             </div>
+            
             ))}
         </div>
   );
