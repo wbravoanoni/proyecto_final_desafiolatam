@@ -37,7 +37,8 @@ const ProductoUnico = () => {
                         <span className="h3">
                             ${Math.round(card.precio * (1 - card.descuento / 100)).toLocaleString("es-CL")}
                         </span>
-                        <span className="ps-2 h6">Descuento: {card.descuento} %</span>
+                        <br />
+                        <span className="ps-2 p text-danger fw-bold">Descuento: {card.descuento} %</span>
                     </>
                     ) : (
                         <span className="h5">$
@@ -48,13 +49,19 @@ const ProductoUnico = () => {
                     </p>
 
                     <p className="fw-bold text-start">Color:</p>
-                    <p className="text-start">{card.color}</p>
+                        <div className="d-flex justify-content-center pb-5">
+                            <div className='btn btn-danger mx-2 borded rounded-circle' style={{border: "0px solid", width: '50px',height: '50px'}}></div>
+                            <div className='btn btn-warning mx-2 borded rounded-circle' style={{border: "0px solid", width: '50px',height: '50px'}}></div>
+                            <div className='btn btn-primary mx-2 borded rounded-circle' style={{border: "0px solid", width: '50px',height: '50px'}}></div>
+                            <div className='btn btn-dark mx-2 borded rounded-circle' style={{border: "0px solid", width: '50px',height: '50px'}}></div>
+                            <div className='btn btn-success mx-2 borded rounded-circle' style={{border: "0px solid", width: '50px',height: '50px'}}></div>
+                        </div>
                     <p className="fw-bold text-start">Talla: </p>
                         <div className="d-flex justify-content-center pb-5">
-                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>S</div>
-                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>M</div>
-                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>L</div>
-                            <div className='mx-2' style={{border: "1px solid", width: '70px'}}>XL</div>
+                            <div className='btn mx-2' style={{border: "1px solid", width: '70px'}}>S</div>
+                            <div className='btn mx-2' style={{border: "1px solid", width: '70px'}}>M</div>
+                            <div className='btn mx-2' style={{border: "1px solid", width: '70px'}}>L</div>
+                            <div className='btn mx-2' style={{border: "1px solid", width: '70px'}}>XL</div>
                         </div>
                         <hr />
                         <p><button className="btn btn-dark w-100">Comprar</button></p>
