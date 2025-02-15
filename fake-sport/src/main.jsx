@@ -6,11 +6,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter } from "react-router-dom";
 
+import CarritoProvider from "../src/assets/context/CarritoContext";
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CarritoProvider> 
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CarritoProvider>
   </StrictMode>,
 )

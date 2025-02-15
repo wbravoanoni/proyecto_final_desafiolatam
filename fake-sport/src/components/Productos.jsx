@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import cardsData from '../assets/info/productos'
 
+import { CarritoContext } from "../assets/context/CarritoContext";
+
 const Productos = () => {
+
+    const { agregarAlCarrito } = useContext(CarritoContext);
+
     const { categoriaId } = useParams();
   const productosFiltrados = cardsData.filter(
     (producto) => producto.categoria === categoriaId
@@ -108,7 +113,7 @@ const Productos = () => {
                 )}
                     </p>
                 </div>
-                <p><button className="btn btn-dark">Comprar</button></p>
+                <button onClick={ () => agregarAlCarrito(card) } className="btn btn-dark mx-2 px-3"><i className="fa-solid fa-cart-shopping me-2"></i>Añadir</button>
               </div>
             </div>
           ))}

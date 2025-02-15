@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { Link,NavLink } from "react-router-dom";
 
+import { CarritoContext } from "../assets/context/CarritoContext";
+
 const NavbarAdmin = () => {
+    const { carrito } = useContext(CarritoContext);
+    const cantidadTotal = carrito.reduce((acc, item) => acc + item.cant, 0);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -89,9 +93,17 @@ const NavbarAdmin = () => {
             </li>
               <li className="nav-item">
                 <NavLink
-                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-cart" : "nav-link active ms-3 text-decoration-none bi bi-cart") }
-                  to="/carrito" >
-                  Carrito
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi"
+                      : "nav-link active ms-3 text-decoration-none bi"
+                      }
+                      to="/cart"
+                    >
+                    🛒 Carrito
+                    {cantidadTotal > 0 && (
+                      <span className="badge bg-danger ms-2">{cantidadTotal}</span>
+                    )}
                 </NavLink>
               </li>
             </ul>

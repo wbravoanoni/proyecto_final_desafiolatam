@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { Link,NavLink } from "react-router-dom";
 
+import { CarritoContext } from "../assets/context/CarritoContext";
+
 
 
 const NavbarUser = () => {
+  const { carrito } = useContext(CarritoContext);
+
+  const cantidadTotal = carrito.reduce((acc, item) => acc + item.cant, 0);
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div className="container-fluid">
@@ -61,11 +67,19 @@ const NavbarUser = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
-                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-cart" : "nav-link active ms-3 text-decoration-none bi bi-cart") }
-                  to="/carrito" >
-                  Carrito
-                </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-cart"
+                    : "nav-link active ms-3 text-decoration-none bi bi-cart"
+                    }
+                    to="/cart"
+                  >
+                  🛒 Carrito
+                  {cantidadTotal > 0 && (
+                    <span className="badge bg-danger ms-2">{cantidadTotal}</span>
+                  )}
+              </NavLink>
               </li>
             </ul>
           </div>

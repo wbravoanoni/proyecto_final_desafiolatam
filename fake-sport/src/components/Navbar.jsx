@@ -61,7 +61,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-cart" : "nav-link active ms-3 text-decoration-none bi bi-cart") }
-                  to="/carrito" >
+                  to="/cart" >
                   Carrito
                 </NavLink>
               </li>

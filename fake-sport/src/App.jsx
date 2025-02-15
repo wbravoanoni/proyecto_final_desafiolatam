@@ -15,6 +15,9 @@ import FormularioUsuarios from './pages/usuarios/FormularioUsuarios';
 import FormularioCategorias from './pages/categorias/FormularioCategorias';
 import DetalleProducto from './pages/DetalleProducto';
 
+import CarritoProvider from "../src/assets/context/CarritoContext";
+import Cart from '../src/pages/Cart'
+
 
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -23,6 +26,7 @@ function App() {
 
   return (
     <>
+      <CarritoProvider>
       <Routes>
         <Route path="/" element={<PaginaPrincipal />} />
         <Route path="/categoria/:categoriaId" element={<CategoriasProductos />} />
@@ -34,8 +38,11 @@ function App() {
         <Route path="/Categorias" element={<FormularioCategorias />} />
         <Route path="/verProductos" element={<VerProductos />} />
         <Route path="/productos/:productoid" element={<DetalleProducto />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
+    </CarritoProvider>
+
     </>
   )
 }
