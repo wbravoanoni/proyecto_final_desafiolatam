@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CarritoContext } from "../assets/context/CarritoContext";
-
+import Navbar from '../components/Navbar';
 import NavbarAdmin from "../components/NavbarAdmin";
 import Footer from "../components/Footer";
 
 const Cart = () => {
+    const isAuthenticated =
+      localStorage.getItem("isAuthenticated") || sessionStorage.getItem("isAuthenticated");
+
   const {
     carrito,
     eliminarDelCarrito,
@@ -24,7 +27,7 @@ const Cart = () => {
 
   return (
     <div>
-      <NavbarAdmin />
+      { isAuthenticated ? <NavbarAdmin /> :<Navbar /> }
       <div className="row">
         <h1 className="text-center mb-4">Carrito</h1>
 
@@ -47,14 +50,12 @@ const Cart = () => {
                 )}
                 <li>
                   Cantidad: {producto.cant}
-                  {/* 🔥 Botón para disminuir cantidad */}
                   <button
                     onClick={() => disminuirCantidad(producto)}
                     className="btn btn-outline-danger mx-2"
                   >
                     -
                   </button>
-                  {/* 🔥 Botón para aumentar cantidad */}
                   <button
                     onClick={() => aumentarCantidad(producto)}
                     className="btn btn-outline-success"
@@ -62,7 +63,6 @@ const Cart = () => {
                     +
                   </button>
                 </li>
-                {/* 🔥 Botón para eliminar producto */}
                 <li>
                   <button
                     onClick={() => eliminarDelCarrito(producto.id)}
@@ -77,8 +77,6 @@ const Cart = () => {
         )}
 
         <p className="d-block mx-auto">Total: ${total_formateado}</p>
-
-        {/* 🔥 Botón para vaciar el carrito */}
         {carrito.length > 0 && (
           <button
             onClick={vaciarCarrito}
