@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import cardsData from '../assets/info/productos'
 
+import { CarritoContext } from "../assets/context/CarritoContext";
+
 const ProductoUnico = () => {
+    const { agregarAlCarrito } = useContext(CarritoContext);
     const { productoid } = useParams();
     const productosFiltrados = cardsData.filter(
     (producto) => producto.id === parseInt(productoid)
@@ -64,7 +67,7 @@ const ProductoUnico = () => {
                             <div className='btn mx-2' style={{border: "1px solid", width: '70px'}}>XL</div>
                         </div>
                         <hr />
-                        <p><button className="btn btn-dark w-100">Comprar</button></p>
+                        <button onClick={ () => agregarAlCarrito(card) } className="btn btn-outline-dark mx-2 px-3"><i className="fa-solid fa-cart-shopping me-2"></i>Añadir</button>
                 </div>
                 <h4 className="text-start ps-5">Descripción:</h4>
                 <p className="card-text">{card.descripcion}</p>    
