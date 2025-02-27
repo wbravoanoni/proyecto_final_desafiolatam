@@ -39,9 +39,9 @@ const Cart = () => {
           productosCarrito.map((producto) => (
             <div key={producto.id} className="mb-3 border p-3">
               <ul className="list-unstyled">
-                {producto.image && (
+                {producto.imagen && (
                   <li>
-                    <img src={producto.image} alt="" width={150} />
+                    <img src={producto.imagen} alt="" width={150} />
                   </li>
                 )}
                 {producto.text && <li>Producto: {producto.text}</li>}

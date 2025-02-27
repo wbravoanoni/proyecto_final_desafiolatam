@@ -1,17 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext,useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
-import cardsData from '../assets/info/productos'
-
 import { CarritoContext } from "../assets/context/CarritoContext";
 
 const Productos = () => {
 
-    const { agregarAlCarrito } = useContext(CarritoContext);
+  const { categoriaId } = useParams(); // Obtiene la categoría de la URL
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { agregarAlCarrito } = useContext(CarritoContext);
 
-    const { categoriaId } = useParams();
-  const productosFiltrados = cardsData.filter(
-    (producto) => producto.categoria === categoriaId
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`https://api-fake-sport.onrender.com/api/productos/categoria/${categoriaId}`);
+            if (!response.ok) throw new Error("Error al obtener los datos");
+            const data = await response.json();
+            setProductos(data);
+        } catch (error) {
+            console.error("Error:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchData();
+}, [categoriaId]);
 
   return (
     <div className="row py-5">
@@ -82,38 +95,36 @@ const Productos = () => {
         </div>
 
         <div className="row">
-          {productosFiltrados.map((card) => (
-            <div className="col-md-4 mb-4" key={card.id}>
+          {productos.map((producto) => (
+            <div className="col-md-4 mb-4" key={producto.id}>
               <div className="card">
-                <a href={`/productos/${card.id}`}>
+                <a href={`/productos/${producto.id}`}>
                     <img
-                    src={card.image}
+                    src={producto.imagen}
                     className="card-img-top"
                     alt="Imagen de excursión"
                     />
                 </a>
                 <div className="card-body">
-                  <p className="card-text">{card.text}</p>
+                  <p className="card-text">{producto.nombre}</p>
                   
                   <p>
-            {card.descuento > 0 ? (
-                <>
-                    <span className="text-decoration-line-through text-danger">
-                        ${card.precio.toLocaleString("es-CL")}
-                    </span>{" "}
-                    <span>
-                        ${Math.round(card.precio * (1 - card.descuento / 100)).toLocaleString("es-CL")}
-                    </span>
-                </>
-                ) : (
-                    <span>$
-                    {Math.round(
-                      card.precio * (1 - card.descuento / 100)
-                    ).toLocaleString("es-CL")}</span>
-                )}
-                    </p>
+  {producto.descuento > 0 ? (
+    <>
+      
+      <span className="text-decoration-line-through text-danger">
+      ${Number(producto.precio).toLocaleString("es-CL")}
+      </span>{" "}
+      <span>
+        ${Math.round(producto.precio * (1 - producto.descuento / 100)).toLocaleString("es-CL")}
+      </span>
+    </>
+  ) : (
+    <span>${producto.precio.toLocaleString("es-CL")}</span>
+  )}
+</p>
                 </div>
-                <button onClick={ () => agregarAlCarrito(card) } className="btn btn-dark mx-2 px-3"><i className="fa-solid fa-cart-shopping me-2"></i>Añadir</button>
+                <button onClick={ () => agregarAlCarrito(producto) } className="btn btn-dark mx-2 px-3"><i className="fa-solid fa-cart-shopping me-2"></i>Añadir</button>
               </div>
             </div>
           ))}
