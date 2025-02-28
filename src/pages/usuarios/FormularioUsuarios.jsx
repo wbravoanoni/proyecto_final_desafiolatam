@@ -126,7 +126,10 @@ const FormularioUsuarios = () => {
                     </div>
                 </div>
                 <p className="text-center">
-                    <a className="mt-3 btn btn-success mx-5 px-5">Guardar</a>
+                  <button type="submit" className="mt-3 btn btn-success mx-5 px-5">
+                    Guardar
+                  </button>
+                  
                     <a href="/verUsuarios" className="mt-3 btn btn-primary px-5">Regresar</a>
                 </p>
             </form>
