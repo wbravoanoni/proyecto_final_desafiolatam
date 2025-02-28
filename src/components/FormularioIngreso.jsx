@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
 const FormularioIngreso = ({ handleLogin, error }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [correo, setEmail] = useState("");
+  const [contrasena, setPassword] = useState("");
   const [recordar, setRecordar] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) {
+    if (!correo.trim() || !contrasena.trim()) {
       alert("Por favor, ingrese su correo y contraseña.");
       return;
     }
 
-    handleLogin(email, password, recordar);
+    handleLogin(correo, contrasena, recordar);
   };
 
   return (
@@ -35,7 +35,7 @@ const FormularioIngreso = ({ handleLogin, error }) => {
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
-            value={email}
+            value={correo}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -48,7 +48,7 @@ const FormularioIngreso = ({ handleLogin, error }) => {
             className="form-control"
             id="floatingPassword"
             placeholder="Password"
-            value={password}
+            value={contrasena}
             onChange={(e) => setPassword(e.target.value)}
             required
           />

@@ -8,12 +8,12 @@ const Ingresar = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (email, password) => {
+  const handleLogin = async (correo, contrasena) => {
     try {
       const response = await fetch("https://api-fake-sport.onrender.com/api/usuarios/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ correo, contrasena }),
       });
 
       const data = await response.json();
