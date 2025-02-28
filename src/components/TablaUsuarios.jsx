@@ -67,12 +67,7 @@ const TablaUsuarios = () => {
     fetchUsuarios();
   }, [pageIndex]);
 
-  useEffect(() => {
-    setUsuarios(prev => [...prev]); // Forzar actualización
-  }, [usuarios]);
-
-  console.log("Estructura de usuarios antes de asignar a la tabla:", usuarios);
-  console.log("Primer usuario recibido:", usuarios.length > 0 ? usuarios[0] : "No hay usuarios");
+  // ❌ Se eliminó useEffect innecesario que causaba render infinito
 
   const data = useMemo(() => usuarios, [usuarios]);
 
@@ -86,8 +81,6 @@ const TablaUsuarios = () => {
     state: { pagination: { pageIndex, pageSize } },
   });
 
-  console.log("📌 Filas generadas por react-table antes de renderizar:", table.getRowModel().rows);
-
   return (
     <div className="container mt-4">
       <h3>Lista de Usuarios</h3>
@@ -95,11 +88,7 @@ const TablaUsuarios = () => {
       {loading && <p>Cargando usuarios...</p>}
       {error && <p className="alert alert-danger">{error}</p>}
 
-      {table.getRowModel().rows.length === 0 && !loading && (
-        <p className="alert alert-warning">No hay usuarios en esta página.</p>
-      )}
-
-      {!loading && !error && table.getRowModel().rows.length > 0 && (
+      {!loading && !error && (
         <>
           <table className="table table-striped">
             <thead>
