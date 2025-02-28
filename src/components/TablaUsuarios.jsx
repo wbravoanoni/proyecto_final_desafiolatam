@@ -9,7 +9,7 @@ import {
 const columns = [
   { accessorKey: "id", header: "ID" },
   { accessorKey: "nombre", header: "Nombre" },
-  { accessorKey: "email", header: "Correo" },
+  { accessorKey: "correo", header: "Correo" },
   { accessorKey: "tipo", header: "Tipo" },
 ];
 
@@ -24,7 +24,7 @@ const TablaUsuarios = () => {
     const fetchUsuarios = async () => {
       setLoading(true);
       setError(null);
-      
+
       const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
       if (!token) {
