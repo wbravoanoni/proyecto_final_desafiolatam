@@ -55,7 +55,14 @@ const TablaUsuarios = () => {
         const data = await response.json();
         console.log("✅ Datos recibidos:", data);
 
-        setUsuarios(data.usuarios);
+        // Validar que data.usuarios existe antes de asignarlo
+        if (data.usuarios && Array.isArray(data.usuarios)) {
+          setUsuarios(data.usuarios);
+        } else {
+          console.error("❌ Error: La API no devolvió una lista de usuarios válida.");
+          setUsuarios([]);
+        }
+
         setTotalPages(data.totalPaginas);
       } catch (err) {
         setError(err.message);
@@ -67,17 +74,19 @@ const TablaUsuarios = () => {
     fetchUsuarios();
   }, [pageIndex]);
 
-  // ❌ Se eliminó useEffect innecesario que causaba render infinito
-
-  const data = useMemo(() => usuarios, [usuarios]);
+  // ✅ Usar `useMemo` para evitar renderizados innecesarios
+  const data = useMemo(() => (usuarios.length > 0 ? usuarios : []), [usuarios]);
 
   console.log("🔹 Datos pasados a react-table:", data);
 
+  // ✅ Agregar `manualPagination: true` para forzar la actualización manual
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true, // ✅ Se controla la paginación manualmente
+    pageCount: totalPages, // ✅ Se asegura que la paginación refleje los datos correctos
     state: { pagination: { pageIndex, pageSize } },
   });
 
@@ -88,7 +97,7 @@ const TablaUsuarios = () => {
       {loading && <p>Cargando usuarios...</p>}
       {error && <p className="alert alert-danger">{error}</p>}
 
-      {!loading && !error && (
+      {!loading && !error && data.length > 0 && (
         <>
           <table className="table table-striped">
             <thead>
@@ -131,6 +140,10 @@ const TablaUsuarios = () => {
             </button>
           </div>
         </>
+      )}
+
+      {!loading && !error && data.length === 0 && (
+        <p className="alert alert-warning">No hay usuarios disponibles.</p>
       )}
     </div>
   );
