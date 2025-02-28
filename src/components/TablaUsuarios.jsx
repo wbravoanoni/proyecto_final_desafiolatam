@@ -35,7 +35,7 @@ const TablaUsuarios = () => {
       }
 
       try {
-        console.log(`🔄 Cargando página ${pageIndex + 1}...`);
+        console.log(`Cargando página ${pageIndex + 1}...`);
         const response = await fetch(
           `https://api-fake-sport.onrender.com/api/usuarios?page=${pageIndex + 1}&limit=${pageSize}`,
           {
@@ -53,13 +53,13 @@ const TablaUsuarios = () => {
         }
 
         const data = await response.json();
-        console.log("✅ Datos recibidos:", data);
+        console.log("Datos recibidos:", data);
 
         // Validar que data.usuarios existe antes de asignarlo
         if (data.usuarios && Array.isArray(data.usuarios)) {
           setUsuarios(data.usuarios);
         } else {
-          console.error("❌ Error: La API no devolvió una lista de usuarios válida.");
+          console.error("Error: La API no devolvió una lista de usuarios válida.");
           setUsuarios([]);
         }
 
@@ -74,19 +74,18 @@ const TablaUsuarios = () => {
     fetchUsuarios();
   }, [pageIndex]);
 
-  // ✅ Usar `useMemo` para evitar renderizados innecesarios
+  // Usar `useMemo` para evitar renderizados innecesarios
   const data = useMemo(() => (usuarios.length > 0 ? usuarios : []), [usuarios]);
 
   console.log("🔹 Datos pasados a react-table:", data);
 
-  // ✅ Agregar `manualPagination: true` para forzar la actualización manual
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    manualPagination: true, // ✅ Se controla la paginación manualmente
-    pageCount: totalPages, // ✅ Se asegura que la paginación refleje los datos correctos
+    manualPagination: true, 
+    pageCount: totalPages, 
     state: { pagination: { pageIndex, pageSize } },
   });
 
