@@ -18,7 +18,8 @@ const TablaUsuarios = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
-  const pageSize = 3;
+  const pageSize = 3; 
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -34,20 +35,24 @@ const TablaUsuarios = () => {
       }
 
       try {
-        const response = await fetch("https://api-fake-sport.onrender.com/api/usuarios", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-        });
+        const response = await fetch(
+          `https://api-fake-sport.onrender.com/api/usuarios?page=${pageIndex + 1}&limit=${pageSize}`, 
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Error al obtener los datos. Verifica tu autenticación.");
         }
 
         const data = await response.json();
-        setUsuarios(data);
+        setUsuarios(data.usuarios); 
+        setTotalPages(data.totalPaginas);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -56,12 +61,10 @@ const TablaUsuarios = () => {
     };
 
     fetchUsuarios();
-  }, []);
-
-  const paginatedData = usuarios.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+  }, [pageIndex]); 
 
   const table = useReactTable({
-    data: paginatedData,
+    data: usuarios,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -108,11 +111,11 @@ const TablaUsuarios = () => {
             >
               Anterior
             </button>
-            <span>Página {pageIndex + 1} de {Math.ceil(usuarios.length / pageSize)}</span>
+            <span>Página {pageIndex + 1} de {totalPages}</span>
             <button
               className="btn btn-primary"
-              onClick={() => setPageIndex((prev) => (prev + 1 < Math.ceil(usuarios.length / pageSize) ? prev + 1 : prev))}
-              disabled={(pageIndex + 1) * pageSize >= usuarios.length}
+              onClick={() => setPageIndex((prev) => (prev + 1 < totalPages ? prev + 1 : prev))}
+              disabled={pageIndex + 1 >= totalPages}
             >
               Siguiente
             </button>
