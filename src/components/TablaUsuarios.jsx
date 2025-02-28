@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo} from "react";
+import React, { useEffect, useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -18,7 +18,7 @@ const TablaUsuarios = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
-  const pageSize = 3; 
+  const pageSize = 3;
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
@@ -35,23 +35,27 @@ const TablaUsuarios = () => {
       }
 
       try {
+        console.log(`Cargando página ${pageIndex + 1}...`);
         const response = await fetch(
-          `https://api-fake-sport.onrender.com/api/usuarios?page=${pageIndex + 1}&limit=${pageSize}`, 
+          `https://api-fake-sport.onrender.com/api/usuarios?page=${pageIndex + 1}&limit=${pageSize}`,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`
+              "Authorization": `Bearer ${token}`,
             },
           }
         );
 
         if (!response.ok) {
-          throw new Error("Error al obtener los datos. Verifica tu autenticación.");
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Error al obtener los datos.");
         }
 
         const data = await response.json();
-        setUsuarios(data.usuarios); 
+        console.log("Datos recibidos:", data);
+
+        setUsuarios(data.usuarios);
         setTotalPages(data.totalPaginas);
       } catch (err) {
         setError(err.message);
@@ -61,12 +65,10 @@ const TablaUsuarios = () => {
     };
 
     fetchUsuarios();
-  }, [pageIndex]); 
-
-  const data = useMemo(() => usuarios, [usuarios]);
+  }, [pageIndex]);
 
   const table = useReactTable({
-    data,
+    data: usuarios,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -80,7 +82,7 @@ const TablaUsuarios = () => {
       {loading && <p>Cargando usuarios...</p>}
       {error && <p className="alert alert-danger">{error}</p>}
 
-      {!loading && !error && (
+      {!loading && !error && usuarios.length > 0 ? (
         <>
           <table className="table table-striped">
             <thead>
@@ -123,6 +125,8 @@ const TablaUsuarios = () => {
             </button>
           </div>
         </>
+      ) : (
+        !loading && <p className="alert alert-warning">No hay usuarios en esta página.</p>
       )}
     </div>
   );
