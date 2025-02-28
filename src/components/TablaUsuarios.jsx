@@ -67,9 +67,9 @@ const TablaUsuarios = () => {
     fetchUsuarios();
   }, [pageIndex]);
 
-  const data = useMemo(() => [...usuarios], [usuarios]);
+  const data = useMemo(() => (usuarios.length > 0 ? [...usuarios] : []), [usuarios]);
 
-  console.log("Estado de usuarios antes de renderizar la tabla:", usuarios); 
+  console.log("Usuarios en el estado antes de renderizar la tabla:", usuarios);
 
   const table = useReactTable({
     data,
