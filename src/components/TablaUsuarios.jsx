@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -35,7 +35,7 @@ const TablaUsuarios = () => {
       }
 
       try {
-        console.log(`Cargando página ${pageIndex + 1}...`);
+        console.log(`🔄 Cargando página ${pageIndex + 1}...`);
         const response = await fetch(
           `https://api-fake-sport.onrender.com/api/usuarios?page=${pageIndex + 1}&limit=${pageSize}`,
           {
@@ -53,7 +53,7 @@ const TablaUsuarios = () => {
         }
 
         const data = await response.json();
-        console.log("Datos recibidos:", data);
+        console.log("✅ Datos recibidos:", data);
 
         setUsuarios(data.usuarios);
         setTotalPages(data.totalPaginas);
@@ -67,8 +67,12 @@ const TablaUsuarios = () => {
     fetchUsuarios();
   }, [pageIndex]);
 
+  const data = useMemo(() => [...usuarios], [usuarios]);
+
+  console.log("Estado de usuarios antes de renderizar la tabla:", usuarios); 
+
   const table = useReactTable({
-    data: usuarios,
+    data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -82,7 +86,11 @@ const TablaUsuarios = () => {
       {loading && <p>Cargando usuarios...</p>}
       {error && <p className="alert alert-danger">{error}</p>}
 
-      {!loading && !error && usuarios.length > 0 ? (
+      {usuarios.length === 0 && !loading && (
+        <p className="alert alert-warning">No hay usuarios en esta página.</p>
+      )}
+
+      {!loading && !error && usuarios.length > 0 && (
         <>
           <table className="table table-striped">
             <thead>
@@ -125,8 +133,6 @@ const TablaUsuarios = () => {
             </button>
           </div>
         </>
-      ) : (
-        !loading && <p className="alert alert-warning">No hay usuarios en esta página.</p>
       )}
     </div>
   );
