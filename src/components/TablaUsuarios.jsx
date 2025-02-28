@@ -67,9 +67,11 @@ const TablaUsuarios = () => {
     fetchUsuarios();
   }, [pageIndex]);
 
-  const data = useMemo(() => [...usuarios], [usuarios]);
+  console.log("Estructura de usuarios antes de asignar a la tabla:", usuarios);
 
-  console.log("Usuarios en el estado antes de renderizar la tabla:", usuarios);
+  const data = useMemo(() => usuarios.map(u => ({ ...u })), [usuarios]);
+
+  console.log("Datos preparados para react-table:", data);
 
   const table = useReactTable({
     data,
@@ -79,7 +81,7 @@ const TablaUsuarios = () => {
     state: { pagination: { pageIndex, pageSize } },
   });
 
-  console.log("Filas generadas por react-table:", table.getRowModel().rows);
+  console.log("Datos de filas en la tabla antes de renderizar:", table.getRowModel().rows);
 
   return (
     <div className="container mt-4">
