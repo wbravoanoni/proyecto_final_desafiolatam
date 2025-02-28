@@ -18,17 +18,36 @@ const TablaUsuarios = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
-  const pageSize = 3; 
+  const pageSize = 3;
 
   useEffect(() => {
     const fetchUsuarios = async () => {
       setLoading(true);
+      setError(null);
+      
+      const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+
+      if (!token) {
+        setError("No tienes permiso para acceder a esta información. Inicia sesión.");
+        setLoading(false);
+        return;
+      }
+
       try {
-        const response = await fetch("https://api-fake-sport.onrender.com/api/usuarios");
-        if (!response.ok) throw new Error("Error al obtener los datos");
+        const response = await fetch("https://api-fake-sport.onrender.com/api/usuarios", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Error al obtener los datos. Verifica tu autenticación.");
+        }
 
         const data = await response.json();
-        setUsuarios(data); 
+        setUsuarios(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -42,7 +61,7 @@ const TablaUsuarios = () => {
   const paginatedData = usuarios.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
   const table = useReactTable({
-    data: paginatedData, 
+    data: paginatedData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -54,7 +73,7 @@ const TablaUsuarios = () => {
       <h3>Lista de Usuarios</h3>
 
       {loading && <p>Cargando usuarios...</p>}
-      {error && <p className="text-danger">Error: {error}</p>}
+      {error && <p className="alert alert-danger">{error}</p>}
 
       {!loading && !error && (
         <>
