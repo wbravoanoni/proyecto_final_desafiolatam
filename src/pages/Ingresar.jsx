@@ -8,12 +8,26 @@ const Ingresar = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (email, password) => {
-    if (email === "admin@correo.cl" && password === "123456") {
-      localStorage.setItem("isAuthenticated", "true"); 
+  const handleLogin = async (email, password) => {
+    try {
+      const response = await fetch("https://api-fake-sport.onrender.com/api/usuarios/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Error en el login");
+      }
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("isAuthenticated", "true");
+
       navigate("/dashboard");
-    }else {
-      setError("Correo o contraseña incorrectos");
+    } catch (err) {
+      setError(err.message);
     }
   };
 

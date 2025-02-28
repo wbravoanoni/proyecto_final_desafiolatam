@@ -7,13 +7,17 @@ const FormularioIngreso = ({ handleLogin, error }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    handleLogin(email, password, recordar); // Pasar el estado de "Recordar"
+    if (!email.trim() || !password.trim()) {
+      alert("Por favor, ingrese su correo y contraseña.");
+      return;
+    }
+
+    handleLogin(email, password, recordar);
   };
 
   return (
     <main className="form-signin w-50 m-auto pt-5">
       <form onSubmit={onSubmit} className="pt-5">
-        {/* Logo */}
         <img
           className="mb-4"
           src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -23,10 +27,8 @@ const FormularioIngreso = ({ handleLogin, error }) => {
         />
         <h1 className="h3 mb-3 fw-normal">Por favor ingresa tus datos</h1>
 
-        {/* Mostrar mensaje de error si existe */}
         {error && <div className="alert alert-danger">{error}</div>}
 
-        {/* Campo de Correo Electrónico */}
         <div className="form-floating pb-3">
           <input
             type="email"
@@ -40,7 +42,6 @@ const FormularioIngreso = ({ handleLogin, error }) => {
           <label htmlFor="floatingInput">Correo Electrónico</label>
         </div>
 
-        {/* Campo de Contraseña */}
         <div className="form-floating pb-3">
           <input
             type="password"
@@ -54,12 +55,11 @@ const FormularioIngreso = ({ handleLogin, error }) => {
           <label htmlFor="floatingPassword">Contraseña</label>
         </div>
 
-        {/* Checkbox "Recordar" */}
         <div className="form-check text-start my-3">
           <input
             className="form-check-input"
             type="checkbox"
-            value={recordar}
+            checked={recordar}
             id="flexCheckDefault"
             onChange={() => setRecordar(!recordar)}
           />
