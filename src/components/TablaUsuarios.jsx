@@ -66,7 +66,7 @@ const TablaUsuarios = () => {
   const data = useMemo(() => usuarios, [usuarios]);
 
   const table = useReactTable({
-    data: usuarios,
+    data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
