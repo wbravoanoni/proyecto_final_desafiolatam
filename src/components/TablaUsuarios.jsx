@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo} from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -62,6 +62,8 @@ const TablaUsuarios = () => {
 
     fetchUsuarios();
   }, [pageIndex]); 
+
+  const data = useMemo(() => usuarios, [usuarios]);
 
   const table = useReactTable({
     data: usuarios,
