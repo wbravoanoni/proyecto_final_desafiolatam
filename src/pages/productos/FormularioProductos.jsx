@@ -47,7 +47,7 @@ const FormularioProductos = () => {
     }
 
     try {
-      const response = await fetch("https://api-fake-sport.onrender.com/api/productos", {
+      const response = await fetch("https://api-fake-sport.onrender.com/api/privado/productos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
