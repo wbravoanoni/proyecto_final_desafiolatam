@@ -6,28 +6,6 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 
-const columns = [
-  { accessorKey: "id", header: "ID" },
-  { accessorKey: "id_categoria", header: "id_categoria" },
-  { accessorKey: "nombre", header: "nombre" },
-  { accessorKey: "precio", header: "precio" },
-  { accessorKey: "cantidad", header: "cantidad" },
-  { accessorKey: "descuento", header: "descuento" },
-  { accessorKey: "activo", header: "Estado" },
-  {
-    accessorKey: "activo",
-    header: "Estado",
-    cell: ({ row }) => (
-      <button
-        className={`btn ${row.original.activo ? "btn-success" : "btn-secondary"}`}
-        onClick={() => toggleEstado(row.original.id)}
-      >
-        {row.original.activo ? "Activo" : "Inactivo"}
-      </button>
-    ),
-  },
-];
-
 const TablaProductos = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -87,6 +65,28 @@ const TablaProductos = () => {
 
     fetchProductos();
   }, [pageIndex]);
+
+
+  const columns = [
+    { accessorKey: "id", header: "ID" },
+    { accessorKey: "id_categoria", header: "id_categoria" },
+    { accessorKey: "nombre", header: "nombre" },
+    { accessorKey: "precio", header: "precio" },
+    { accessorKey: "cantidad", header: "cantidad" },
+    { accessorKey: "descuento", header: "descuento" },
+    {
+      accessorKey: "activo",
+      header: "Estado",
+      cell: ({ row }) => (
+        <button
+          className={`btn ${row.original.activo ? "btn-success" : "btn-secondary"}`}
+          onClick={() => toggleEstado(row.original.id)}
+        >
+          {row.original.activo ? "Activo" : "Inactivo"}
+        </button>
+      ),
+    },
+  ];
 
   const toggleEstado = async (id) => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
