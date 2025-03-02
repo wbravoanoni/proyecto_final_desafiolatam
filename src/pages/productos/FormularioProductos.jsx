@@ -18,6 +18,7 @@ const FormularioProductos = () => {
     descuento: "",
     imagen: "",
     activo: true,
+    id_categoria: "",
   });
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token") || sessionStorage.getItem("token");
@@ -80,7 +81,7 @@ const FormularioProductos = () => {
                     {key.charAt(0).toUpperCase() + key.slice(1)}
                   </label>
                   <input
-                    type={key === "precio" || key === "cantidad" || key === "descuento" ? "number" : "text"}
+                    type={key === "precio" || key === "cantidad" || key === "descuento" || key === "id_categoria" ? "number" : "text"}
                     className="form-control"
                     id={key}
                     name={key}
