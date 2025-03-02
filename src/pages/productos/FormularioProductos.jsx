@@ -8,7 +8,17 @@ const FormularioProductos = () => {
   const isAuthenticated =
     localStorage.getItem("isAuthenticated") || sessionStorage.getItem("isAuthenticated");
 
-  const [nombre, setNombre] = useState("");
+  const [producto, setProducto] = useState({
+    nombre: "",
+    descripcion: "",
+    talla: "",
+    color: "",
+    precio: "",
+    cantidad: "",
+    descuento: "",
+    imagen: "",
+    activo: true,
+  });
   const [error, setError] = useState(null);
   const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
@@ -18,11 +28,19 @@ const FormularioProductos = () => {
     }
   }, [isAuthenticated, navigate]);
 
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setProducto({
+      ...producto,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     
-    if (!nombre.trim()) {
+    if (!producto.nombre.trim()) {
       setError("El nombre del producto es obligatorio.");
       return;
     }
@@ -34,7 +52,7 @@ const FormularioProductos = () => {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({ nombre }),
+        body: JSON.stringify(producto),
       });
 
       if (!response.ok) {
@@ -53,28 +71,46 @@ const FormularioProductos = () => {
       <NavbarAdmin />
       <div className="container mt-3 text-center">
         <h2 className="pt-5">Crear Producto</h2>
-
         <div className="row">
           <form onSubmit={handleSubmit}>
-            <div className="offset-4 col-sm-4 mt-2">
-              <label htmlFor="nombre" className="form-label fw-bold">
-                Nombre
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="nombre"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                required
-              />
-              {error && <div className="text-danger mt-2">{error}</div>}
-            </div>
+            {Object.keys(producto).map((key) => (
+              key !== "activo" ? (
+                <div className="offset-4 col-sm-4 mt-2" key={key}>
+                  <label htmlFor={key} className="form-label fw-bold">
+                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                  </label>
+                  <input
+                    type={key === "precio" || key === "cantidad" || key === "descuento" ? "number" : "text"}
+                    className="form-control"
+                    id={key}
+                    name={key}
+                    value={producto[key]}
+                    onChange={handleChange}
+                    required={key === "nombre"}
+                  />
+                </div>
+              ) : (
+                <div className="offset-4 col-sm-4 mt-2" key={key}>
+                  <label className="form-check-label">
+                    Activo
+                  </label>
+                  <input
+                    type="checkbox"
+                    className="form-check-input ms-2"
+                    id={key}
+                    name={key}
+                    checked={producto[key]}
+                    onChange={handleChange}
+                  />
+                </div>
+              )
+            ))}
+            {error && <div className="text-danger mt-2">{error}</div>}
             <p className="text-center">
               <button type="submit" className="mt-3 btn btn-success mx-5 px-5">
                 Guardar
               </button>
-              <a href="/verCategorias" className="mt-3 btn btn-primary px-5">
+              <a href="/verProductos" className="mt-3 btn btn-primary px-5">
                 Regresar
               </a>
             </p>
