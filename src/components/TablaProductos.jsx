@@ -14,6 +14,18 @@ const columns = [
   { accessorKey: "cantidad", header: "cantidad" },
   { accessorKey: "descuento", header: "descuento" },
   { accessorKey: "activo", header: "Estado" },
+  {
+    accessorKey: "activo",
+    header: "Estado",
+    cell: ({ row }) => (
+      <button
+        className={`btn ${row.original.activo ? "btn-success" : "btn-secondary"}`}
+        onClick={() => toggleEstado(row.original.id)}
+      >
+        {row.original.activo ? "Activo" : "Inactivo"}
+      </button>
+    ),
+  },
 ];
 
 const TablaProductos = () => {
@@ -75,6 +87,36 @@ const TablaProductos = () => {
 
     fetchProductos();
   }, [pageIndex]);
+
+  const toggleEstado = async (id) => {
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    if (!token) {
+      setError("No tienes permiso para realizar esta acción.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://api-fake-sport.onrender.com/api/privado/productos/${id}/toggle`, {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al cambiar el estado del producto");
+      }
+      
+      setProductos((prevProductos) =>
+        prevProductos.map((producto) =>
+          producto.id === id ? { ...producto, activo: !producto.activo } : producto
+        )
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   const data = useMemo(() => productos, [productos]);
 
