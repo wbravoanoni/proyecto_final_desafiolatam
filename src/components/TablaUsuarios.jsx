@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -19,6 +19,7 @@ const TablaUsuarios = () => {
   const [error, setError] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
   const pageSize = 3;
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchUsuarios = async () => {
@@ -34,20 +35,35 @@ const TablaUsuarios = () => {
       }
 
       try {
-        const response = await fetch("https://api-fake-sport.onrender.com/api/usuarios", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-        });
+        console.log(`Cargando página ${pageIndex + 1}...`);
+        const response = await fetch(
+          `https://api-fake-sport.onrender.com/api/usuarios?page=${pageIndex + 1}&limit=${pageSize}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
-          throw new Error("Error al obtener los datos. Verifica tu autenticación.");
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Error al obtener los datos.");
         }
 
         const data = await response.json();
-        setUsuarios(data);
+        console.log("Datos recibidos:", data);
+
+        // Validar que data.usuarios existe antes de asignarlo
+        if (data.usuarios && Array.isArray(data.usuarios)) {
+          setUsuarios(data.usuarios);
+        } else {
+          console.error("Error: La API no devolvió una lista de usuarios válida.");
+          setUsuarios([]);
+        }
+
+        setTotalPages(data.totalPaginas);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -56,15 +72,20 @@ const TablaUsuarios = () => {
     };
 
     fetchUsuarios();
-  }, []);
+  }, [pageIndex]);
 
-  const paginatedData = usuarios.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+  // Usar `useMemo` para evitar renderizados innecesarios
+  const data = useMemo(() => (usuarios.length > 0 ? usuarios : []), [usuarios]);
+
+  console.log("🔹 Datos pasados a react-table:", data);
 
   const table = useReactTable({
-    data: paginatedData,
+    data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true, 
+    pageCount: totalPages, 
     state: { pagination: { pageIndex, pageSize } },
   });
 
@@ -75,7 +96,7 @@ const TablaUsuarios = () => {
       {loading && <p>Cargando usuarios...</p>}
       {error && <p className="alert alert-danger">{error}</p>}
 
-      {!loading && !error && (
+      {!loading && !error && data.length > 0 && (
         <>
           <table className="table table-striped">
             <thead>
@@ -108,16 +129,20 @@ const TablaUsuarios = () => {
             >
               Anterior
             </button>
-            <span>Página {pageIndex + 1} de {Math.ceil(usuarios.length / pageSize)}</span>
+            <span>Página {pageIndex + 1} de {totalPages}</span>
             <button
               className="btn btn-primary"
-              onClick={() => setPageIndex((prev) => (prev + 1 < Math.ceil(usuarios.length / pageSize) ? prev + 1 : prev))}
-              disabled={(pageIndex + 1) * pageSize >= usuarios.length}
+              onClick={() => setPageIndex((prev) => (prev + 1 < totalPages ? prev + 1 : prev))}
+              disabled={pageIndex + 1 >= totalPages}
             >
               Siguiente
             </button>
           </div>
         </>
+      )}
+
+      {!loading && !error && data.length === 0 && (
+        <p className="alert alert-warning">No hay usuarios disponibles.</p>
       )}
     </div>
   );
