@@ -10,7 +10,7 @@ import Ingresar from './pages/Ingresar';
 import Dashboard from './pages/Dashboard';
 import VerUsuarios from './pages/usuarios/VerUsuarios';
 import VerCategorias from './pages/categorias/VerCategorias';
-import VerProductos from './pages/usuarios/VerProductos';
+import VerProductos from './pages/productos/VerProductos';
 import FormularioUsuarios from './pages/usuarios/FormularioUsuarios';
 import FormularioCategorias from './pages/categorias/FormularioCategorias';
 import DetalleProducto from './pages/DetalleProducto';
