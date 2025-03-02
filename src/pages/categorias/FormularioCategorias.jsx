@@ -10,6 +10,7 @@ const FormularioCategorias = () => {
 
   const [nombre, setNombre] = useState("");
   const [error, setError] = useState(null);
+  const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -31,6 +32,7 @@ const FormularioCategorias = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({ nombre }),
       });
@@ -40,7 +42,7 @@ const FormularioCategorias = () => {
       }
 
       alert("Categoría creada exitosamente");
-      navigate("/verCategorias");
+      navigate("/verCategorias"); 
     } catch (error) {
       setError(error.message);
     }
