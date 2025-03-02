@@ -15,18 +15,12 @@ const VerProductos = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    sessionStorage.removeItem("isAuthenticated");
-    navigate("/ingresar");
-  };
-
   return (
     <div>
       <NavbarAdmin />
       <div className="container mt-3 text-center">
-        <h2 className="pt-5">Registros de Categorias</h2>
-        <p className="text-start"><a href="Categorias" className="mt-3 btn btn-danger">Agregar categorias</a></p>
+        <h2 className="pt-5">Registros de Productos</h2>
+        <p className="text-start"><a href="Productos" className="mt-3 btn btn-danger">Agregar Productos</a></p>
       </div>
       <TablaProductos/>
       <Footer />

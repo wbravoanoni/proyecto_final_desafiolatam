@@ -13,6 +13,7 @@ import VerCategorias from './pages/categorias/VerCategorias';
 import VerProductos from './pages/productos/VerProductos';
 import FormularioUsuarios from './pages/usuarios/FormularioUsuarios';
 import FormularioCategorias from './pages/categorias/FormularioCategorias';
+import FormularioProductos from './pages/productos/FormularioProductos';
 import DetalleProducto from './pages/DetalleProducto';
 
 import CarritoProvider from "../src/assets/context/CarritoContext";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/verCategorias" element={<VerCategorias />} />
         <Route path="/Categorias" element={<FormularioCategorias />} />
         <Route path="/verProductos" element={<VerProductos />} />
+        <Route path="/Productos" element={<FormularioProductos />} />
         <Route path="/productos/:productoid" element={<DetalleProducto />} />
         <Route path='/cart' element={<Cart />} />
         <Route path="*" element={<Pagina404 />} />
