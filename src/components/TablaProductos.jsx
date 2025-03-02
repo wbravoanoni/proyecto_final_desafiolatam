@@ -17,7 +17,7 @@ const columns = [
 ];
 
 const TablaProductos = () => {
-  const [categorias, setCategorias] = useState([]);
+  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pageIndex, setPageIndex] = useState(0);
@@ -25,7 +25,7 @@ const TablaProductos = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const fetchCategorias = async () => {
+    const fetchProductos = async () => {
       setLoading(true);
       setError(null);
 
@@ -58,11 +58,11 @@ const TablaProductos = () => {
         const data = await response.json();
         console.log("Datos recibidos:", data);
 
-        if (data.categorias && Array.isArray(data.categorias)) {
-          setCategorias(data.categorias);
+        if (data.productos && Array.isArray(data.productos)) {
+          setProductos(data.productos);
         } else {
-          console.error("Error: La API no devolvió una lista de categorías válida.");
-          setCategorias([]);
+          console.error("Error: La API no devolvió una lista de productos válida.");
+          setProductos([]);
         }
 
         setTotalPages(data.totalPaginas);
@@ -73,10 +73,10 @@ const TablaProductos = () => {
       }
     };
 
-    fetchCategorias();
+    fetchProductos();
   }, [pageIndex]);
 
-  const data = useMemo(() => categorias, [categorias]);
+  const data = useMemo(() => productos, [productos]);
 
   console.log("🔹 Datos pasados a react-table:", data);
 
@@ -92,9 +92,9 @@ const TablaProductos = () => {
 
   return (
     <div className="container mt-4">
-      <h3>Lista de Categorías</h3>
+      <h3>Lista de Productos</h3>
 
-      {loading && <p>Cargando categorías...</p>}
+      {loading && <p>Cargando productos...</p>}
       {error && <p className="alert alert-danger">{error}</p>}
 
       {!loading && !error && data.length > 0 && (
