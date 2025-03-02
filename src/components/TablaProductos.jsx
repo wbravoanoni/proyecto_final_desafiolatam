@@ -40,7 +40,7 @@ const TablaProductos = () => {
       try {
         console.log(`Cargando página ${pageIndex + 1}...`);
         const response = await fetch(
-          `https://api-fake-sport.onrender.com/api/productos?page=${pageIndex + 1}&limit=${pageSize}`,
+          `https://api-fake-sport.onrender.com/api/privado/productos?page=${pageIndex + 1}&limit=${pageSize}`,
           {
             method: "GET",
             headers: {
