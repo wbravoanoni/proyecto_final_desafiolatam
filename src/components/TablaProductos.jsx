@@ -66,6 +66,9 @@ const TablaProductos = () => {
     fetchProductos();
   }, [pageIndex]);
 
+const handleEdit = (id) => {
+    navigate(`/editar-producto/${id}`);
+};
 
   const columns = [
     { accessorKey: "id", header: "ID" },
@@ -86,6 +89,18 @@ const TablaProductos = () => {
         </button>
       ),
     },
+    {
+        accessorKey: "editar",
+        header: "Editar",
+        cell: ({ row }) => (
+          <button
+            className="btn btn-warning"
+            onClick={() => handleEdit(row.original.id)}
+          >
+            Editar
+          </button>
+        ),
+      },
   ];
 
   const toggleEstado = async (id) => {
