@@ -41,10 +41,8 @@ function App() {
         <Route path="/Categorias" element={<FormularioCategorias />} />
         <Route path="/verProductos" element={<VerProductos />} />
         <Route path="/Productos" element={<FormularioProductos />} />
-        <Route path="/productos/:productoid" element={<DetalleProducto />} />
-
-        <Route path="/ editar-producto/:id" element={<EditarProducto />} />
-       
+        <Route path="/productos/:productoid" element={<DetalleProducto />} />¿
+        <Route path="/editar-producto/:id" element={<EditarProducto />} />
         <Route path='/cart' element={<Cart />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
