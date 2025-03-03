@@ -12,7 +12,7 @@ const EditarProducto = () => {
     try {
         const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
-        const response = await fetch(`https://api-fake-sport.onrender.com/api/privado/productos/${id}`, {
+        const response = await fetch(`https://api-fake-sport.onrender.com/api/productos/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
