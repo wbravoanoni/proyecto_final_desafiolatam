@@ -1,4 +1,4 @@
-import React, { useContext,useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarAdmin from "../../components/NavbarAdmin";
 import Footer from "../../components/Footer";
@@ -75,7 +75,7 @@ const FormularioUsuarios = () => {
       setFormData({ nombre: "", usuario: "", correo: "", contrasena: "", contrasena2: "" });
 
       setTimeout(() => {
-        navigate("/verUsuarios"); 
+        navigate("/verUsuarios");
       }, 2000);
     } catch (err) {
       setError(err.message);
@@ -88,54 +88,78 @@ const FormularioUsuarios = () => {
       <div className="container mt-3 text-center">
         <h2 className="pt-5">Crear Usuarios</h2>
 
+        {error && <div className="alert alert-danger">{error}</div>}
+        {success && <div className="alert alert-success">{success}</div>}
+
         <div className="row">
-            <form onSubmit={handleSubmit}>
-                <div className="offset-4 col-sm-4 mt-2">
-                    <label for="nombre" className="form-label fw-bold">Nombre</label>
-                    <input type="text" className="form-control" id="nombre" placeholder="" required name="nombre" value={formData.nombre} onChange={handleChange}/>
-                    <div className="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                </div>
-                <div className="offset-4 col-sm-4 mt-2">
-                    <label for="usuarios" className="form-label fw-bold">Usuario</label>
-                    <input type="text" className="form-control" id="usuarios" placeholder="" required name="usuario" value={formData.usuario} onChange={handleChange}/>
-                    <div className="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                </div>
-                <div className="offset-4 col-sm-4 mt-2">
-                    <label for="firstName" className="form-label fw-bold">Correo</label>
-                    <input type="email" className="form-control" id="firstName" placeholder="" required name="correo" value={formData.correo} onChange={handleChange}/>
-                    <div className="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                </div>
-                <div className="offset-4 col-sm-4 mt-2">
-                    <label for="contrasena" className="form-label fw-bold">Contraseña</label>
-                    <input type="password" className="form-control" id="contrasena" placeholder="" required name="contrasena" value={formData.contrasena} onChange={handleChange}/>
-                    <div className="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                </div>
-                <div className="offset-4 col-sm-4 mt-2">
-                    <label for="contrasena2" className="form-label fw-bold">Repita la contraseña</label>
-                    <input type="password" className="form-control" id="contrasena2" placeholder="" required name="contrasena" value={formData.contrasena} onChange={handleChange}/>
-                    <div className="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                </div>
-                <p className="text-center">
-                  <button type="submit" className="mt-3 btn btn-success mx-5 px-5">
-                    Guardar
-                  </button>
-                  
-                    <a href="/verUsuarios" className="mt-3 btn btn-primary px-5">Regresar</a>
-                </p>
-            </form>
+          <form onSubmit={handleSubmit}>
+            <div className="offset-4 col-sm-4 mt-2">
+              <label className="form-label fw-bold">Nombre</label>
+              <input
+                type="text"
+                className="form-control"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="offset-4 col-sm-4 mt-2">
+              <label className="form-label fw-bold">Usuario</label>
+              <input
+                type="text"
+                className="form-control"
+                name="usuario"
+                value={formData.usuario}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="offset-4 col-sm-4 mt-2">
+              <label className="form-label fw-bold">Correo</label>
+              <input
+                type="email"
+                className="form-control"
+                name="correo"
+                value={formData.correo}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="offset-4 col-sm-4 mt-2">
+              <label className="form-label fw-bold">Contraseña</label>
+              <input
+                type="password"
+                className="form-control"
+                name="contrasena"
+                value={formData.contrasena}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="offset-4 col-sm-4 mt-2">
+              <label className="form-label fw-bold">Repita la contraseña</label>
+              <input
+                type="password"
+                className="form-control"
+                name="contrasena2"
+                value={formData.contrasena2}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <p className="text-center">
+              <button type="submit" className="mt-3 btn btn-success mx-5 px-5">
+                Guardar
+              </button>
+              <a href="/verUsuarios" className="mt-3 btn btn-primary px-5">
+                Regresar
+              </a>
+            </p>
+          </form>
         </div>
-    </div>
-    <Footer />
+      </div>
+      <Footer />
     </div>
   );
 };
