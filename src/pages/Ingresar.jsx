@@ -24,6 +24,7 @@ const Ingresar = () => {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("tipo", data.tipo);
 
       navigate("/dashboard");
     } catch (err) {

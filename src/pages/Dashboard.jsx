@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarAdmin from "../components/NavbarAdmin";
+import NavbarUser from "../components/NavbarUser";
 import Footer from "../components/Footer";
 
 const Dashboard = () => {
@@ -22,7 +23,8 @@ const Dashboard = () => {
 
   return (
     <div>
-      <NavbarAdmin />
+      {localStorage.getItem("tipo") === 1 ? <NavbarAdmin /> : <NavbarUser /> }
+      
       <div className="container mt-5 text-center">
         <h2>Bienvenido al Dashboard</h2>
         <p>Has iniciado sesión correctamente.</p>
