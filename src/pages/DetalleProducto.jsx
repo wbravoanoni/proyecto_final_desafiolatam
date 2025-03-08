@@ -15,7 +15,8 @@ const DetalleProducto = () => {
       
   return (
     <div>
-      { isAuthenticated ? <NavbarAdmin /> :<Navbar /> }
+      { isAuthenticated ? localStorage.getItem("tipo") === 1 ? <NavbarAdmin /> : <NavbarUser /> :<Navbar /> }
+      
     <div>
       <div className="container-fluid">
         <ProductoUnico/>
