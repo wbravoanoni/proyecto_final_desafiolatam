@@ -68,23 +68,27 @@ const NavbarUser = () => {
               </li>
             </ul>
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-
               { (!isAuthenticated) ? 
-              <NavLink
-                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
-                  to="/ingresar" >
-                  Ingresar
-                </NavLink> :
+                <li className="nav-item">
+                  <NavLink
+                    className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
+                    to="/ingresar" >
+                    Ingresar
+                  </NavLink>
+                </li> :
 
                 <div> 
-                  <NavLink
-                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
-                  to="" >
-                  Bienvenido
-                  </NavLink>
+                  <li className="nav-item">
+                    <NavLink
+                    className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
+                    to="" >
+                    Bienvenido
+                    </NavLink>
+                  </li>
 
+                  <li className="nav-item">
                   <a onClick={handleLogout} className="dropdown-item" href="/verProductos">Cerra Sesion</a>
+                  </li>
                 </div>
                 }
                 
