@@ -36,6 +36,7 @@ const Ingresar = () => {
       <Navbar />
       <div className="container-fluid mt-5">
         <FormularioIngreso handleLogin={handleLogin} error={error} />
+        <a href="/Comprador">Crear Usuario</a>
       </div>
       <Footer />
     </div>

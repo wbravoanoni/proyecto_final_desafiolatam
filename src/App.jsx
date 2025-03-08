@@ -16,6 +16,8 @@ import FormularioCategorias from './pages/categorias/FormularioCategorias';
 import FormularioProductos from './pages/productos/FormularioProductos';
 import DetalleProducto from './pages/DetalleProducto';
 import EditarProducto from './pages/productos/EditarProducto';
+import FormularioComprador from './pages/usuarios/FormularioComprador';
+
 
 
 import CarritoProvider from "../src/assets/context/CarritoContext";
@@ -44,6 +46,7 @@ function App() {
         <Route path="/productos/:productoid" element={<DetalleProducto />} />¿
         <Route path="/editar-producto/:id" element={<EditarProducto />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path="/Comprador" element={<FormularioComprador />} />
         <Route path="*" element={<Pagina404 />} />
       </Routes>
     </CarritoProvider>
