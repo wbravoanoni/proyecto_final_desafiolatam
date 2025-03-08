@@ -5,15 +5,7 @@ import NavbarUser from '../../components/NavbarUser';
 
 const FormularioComprador = () => {
   const navigate = useNavigate();
-  const isAuthenticated =
-    localStorage.getItem("isAuthenticated") || sessionStorage.getItem("isAuthenticated");
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/ingresar"); 
-    }
-  }, [isAuthenticated, navigate]);
-
+  
   const [formData, setFormData] = useState({
     nombre: "",
     usuario: "",
