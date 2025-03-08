@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from '../components/Navbar';
 import NavbarAdmin from '../components/NavbarAdmin';
-import NavbarAdmin from '../components/NavbarAdmin';
 import NavbarUser from '../components/NavbarUser';
 import Footer from '../components/Footer';
 import ProductoUnico from '../components/ProductoUnico';
