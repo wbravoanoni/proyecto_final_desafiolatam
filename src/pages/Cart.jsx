@@ -27,7 +27,7 @@ const Cart = () => {
 
   return (
     <div>
-      { isAuthenticated ? <NavbarAdmin /> :<Navbar /> }
+      { isAuthenticated ? (parseInt(localStorage.getItem("tipo")) === 1 ? <NavbarAdmin /> : <NavbarUser />) : <Navbar /> }
       <div className="row">
         <h1 className="text-center mb-4">Carrito</h1>
 
