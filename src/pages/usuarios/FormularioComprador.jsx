@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
+import Navbar from '../components/Navbar';
 
 const FormularioComprador = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const FormularioComprador = () => {
 
   return (
     <div>
-      <NavbarUser />
+      <Navbar />
       <div className="container mt-3 text-center">
         <h2 className="pt-5">Crear Usuarios</h2>
 
