@@ -16,6 +16,12 @@ const NavbarUser = () => {
 
   const cantidadTotal = carrito.reduce((acc, item) => acc + item.cant, 0);
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    sessionStorage.removeItem("isAuthenticated");
+    navigate("/ingresar");
+  };
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div className="container-fluid">
@@ -65,18 +71,21 @@ const NavbarUser = () => {
               <li className="nav-item">
 
               { (!isAuthenticated) ? 
-              
               <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
                   to="/ingresar" >
                   Ingresar
                 </NavLink> :
 
-                <NavLink
-                className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
-                to="" >
-                Bienvenido
-                </NavLink>
+                <div> 
+                  <NavLink
+                  className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
+                  to="" >
+                  Bienvenido
+                  </NavLink>
+
+                  <a onClick={handleLogout} className="dropdown-item" href="/verProductos">Cerra Sesion</a>
+                </div>
                 }
                 
               </li>
