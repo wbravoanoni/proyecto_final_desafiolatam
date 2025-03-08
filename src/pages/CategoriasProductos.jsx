@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from '../components/Navbar';
 import NavbarAdmin from '../components/NavbarAdmin';
+import NavbarUser from '../components/NavbarUser';
 import ImagenInterna from '../components/ImagenInterna';
 import Footer from '../components/Footer';
 import Productos from '../components/Productos';
@@ -15,7 +16,7 @@ const CategoriasProductos = () => {
       
   return (
     <div>
-      { isAuthenticated ? <NavbarAdmin /> :<Navbar /> }
+      { isAuthenticated ? (parseInt(localStorage.getItem("tipo")) === 1 ? <NavbarAdmin /> : <NavbarUser />) : <Navbar /> }
     <div>
       <div className="container-fluid">
         <ImagenInterna/>
