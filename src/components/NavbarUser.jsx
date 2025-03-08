@@ -3,12 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { Link,NavLink } from "react-router-dom";
-
 import { CarritoContext } from "../assets/context/CarritoContext";
 
 
 
 const NavbarUser = () => {
+
+  const isAuthenticated =
+    localStorage.getItem("isAuthenticated") || sessionStorage.getItem("isAuthenticated");
+
   const { carrito } = useContext(CarritoContext);
 
   const cantidadTotal = carrito.reduce((acc, item) => acc + item.cant, 0);
@@ -60,11 +63,22 @@ const NavbarUser = () => {
             </ul>
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <NavLink
+
+              { (!isAuthenticated) ? 
+              
+              <NavLink
                   className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
                   to="/ingresar" >
                   Ingresar
+                </NavLink> :
+
+                <NavLink
+                className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
+                to="" >
+                Bienvenido
                 </NavLink>
+                }
+                
               </li>
               <li className="nav-item">
               <NavLink
