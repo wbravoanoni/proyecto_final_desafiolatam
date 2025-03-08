@@ -76,8 +76,7 @@ const NavbarUser = () => {
                     Ingresar
                   </NavLink>
                 </li> :
-
-                <div> 
+                <>
                   <li className="nav-item">
                     <NavLink
                     className={ ({ isActive }) => (isActive ? "nav-link active ms-3 text-decoration-none fw-bold menu-activo bi bi-key" : "nav-link active ms-3 text-decoration-none bi bi-key") }
@@ -86,10 +85,11 @@ const NavbarUser = () => {
                     </NavLink>
                   </li>
 
-                  <li className="nav-item">
+                  <li className="nav-link ms-3 text-decoration-none fw-bold menu-activo">
                     <a onClick={handleLogout} className="dropdown-item" href="/verProductos">Cerra Sesion</a>
                   </li>
-                </div>
+                </>
+
                 }
               
               <li className="nav-item">
