@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from '../components/Navbar';
 import NavbarAdmin from '../components/NavbarAdmin';
+import NavbarUser from '../components/NavbarUser';
 import Carousel from '../components/Carousel';
 import Categorias from '../components/Categorias';
 import ProductosNuevos from '../components/ProductosNuevos';
@@ -16,7 +17,7 @@ const PaginaPrincipal = () => {
 
   return (
     <div>
-     { isAuthenticated ? <NavbarAdmin /> :<Navbar /> }
+      { isAuthenticated ? (parseInt(localStorage.getItem("tipo")) === 1 ? <NavbarAdmin /> : <NavbarUser />) : <Navbar /> }
     <div>
       <div className="container-fluid">
         <Carousel />
