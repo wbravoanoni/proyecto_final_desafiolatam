@@ -87,12 +87,11 @@ const NavbarUser = () => {
                   </li>
 
                   <li className="nav-item">
-                  <a onClick={handleLogout} className="dropdown-item" href="/verProductos">Cerra Sesion</a>
+                    <a onClick={handleLogout} className="dropdown-item" href="/verProductos">Cerra Sesion</a>
                   </li>
                 </div>
                 }
-                
-              </li>
+              
               <li className="nav-item">
               <NavLink
                 className={({ isActive }) =>
