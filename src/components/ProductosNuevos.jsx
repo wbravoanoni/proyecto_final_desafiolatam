@@ -37,7 +37,7 @@ const ProductosNuevos = () => {
                     >
                     <div className="container mt-3">
                         <div className="row">
-                        {slide.cards.map((card, idx) => (
+                        {productos.cards.map((card, idx) => (
                             <div className="col-md-4" key={idx}>
                             <div className="card">
                                 <a href={`/productos/${producto.id}`}><img src={producto.imagen} className="card-img-top" alt={producto.nombre}/></a>
