@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CarritoContext } from "../assets/context/CarritoContext";
 import Navbar from '../components/Navbar';
 import NavbarAdmin from "../components/NavbarAdmin";
+import NavbarUser from '../components/NavbarUser';
 import Footer from "../components/Footer";
 
 const Cart = () => {
