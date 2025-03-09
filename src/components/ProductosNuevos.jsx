@@ -33,32 +33,37 @@ const ProductosNuevos = () => {
         return <p className="text-center">Cargando productos...</p>;
     }
 
+    // Divide los productos en grupos de 3
+    const productosEnGrupos = [];
+    for (let i = 0; i < productos.length; i += 3) {
+        productosEnGrupos.push(productos.slice(i, i + 3));
+    }
+
     return (
         <div className="row">
             <h3 className="text-center py-3">Productos Nuevos</h3>
             <div id="carouselWithCards" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
-                    {productos.map((producto, index) => (
-                        <div
-                            className={`carousel-item ${index === 0 ? "active" : ""}`}
-                            key={index}
-                        >
+                    {productosEnGrupos.map((grupo, index) => (
+                        <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
                             <div className="container mt-3">
                                 <div className="row">
-                                    <div className="col-md-4">
-                                        <div className="card">
-                                            <a href={`/productos/${producto.id}`}>
-                                                <img
-                                                    src={producto.imagen || "/imagenes/default.jpg"}
-                                                    className="card-img-top"
-                                                    alt={producto.nombre}
-                                                />
-                                            </a>
-                                            <div className="card-body text-center">
-                                                <h5 className="card-title">{producto.precio}</h5>
+                                    {grupo.map((producto, idx) => (
+                                        <div className="col-md-4" key={idx}>
+                                            <div className="card">
+                                                <a href={`/productos/${producto.id}`}>
+                                                    <img
+                                                        src={producto.imagen || "/imagenes/default.jpg"}
+                                                        className="card-img-top"
+                                                        alt={producto.nombre}
+                                                    />
+                                                </a>
+                                                <div className="card-body text-center">
+                                                    <h5 className="card-title">{producto.precio}</h5>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
