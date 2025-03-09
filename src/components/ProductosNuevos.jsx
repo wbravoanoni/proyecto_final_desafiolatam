@@ -5,6 +5,7 @@ import React, { useContext,useState,useEffect } from "react";
 const ProductosNuevos = () => {
 
     const [productos, setProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       const fetchData = async () => {
