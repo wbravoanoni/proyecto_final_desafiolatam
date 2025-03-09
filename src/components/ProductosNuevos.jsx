@@ -30,7 +30,7 @@ const ProductosNuevos = () => {
             <h3 className="text-center py-3">Productos Nuevos</h3>
             <div id="carouselWithCards" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
-                  {productos.map((producto) => (
+                  {productos.map((producto,index) => (
                     <div
                     className={`carousel-item ${index === 0 ? 'active' : ''}`}
                     key={index}
