@@ -44,6 +44,7 @@ const ProductoUnico = () => {
           </div>
         </div>
         <div className="col-5 mb-4">
+          <h4>{producto.nombre}</h4>
           <p>
             {producto.descuento > 0 ? (
               <>

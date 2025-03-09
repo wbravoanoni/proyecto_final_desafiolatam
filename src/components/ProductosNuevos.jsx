@@ -59,7 +59,8 @@ const ProductosNuevos = () => {
                                                     />
                                                 </a>
                                                 <div className="card-body text-center">
-                                                    <h5 className="card-title">{producto.precio}</h5>
+                                                    <h5 className="card-title">{producto.nombre}</h5>
+                                                    <h5 className="card-title">${producto.precio}</h5>
                                                 </div>
                                             </div>
                                         </div>
