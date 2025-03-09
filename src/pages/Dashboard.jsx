@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      {localStorage.getItem("tipo") === 1 ? <NavbarAdmin /> : <NavbarUser /> }
+      { isAuthenticated ? (parseInt(localStorage.getItem("tipo")) === 1 ? <NavbarAdmin /> : <NavbarUser />) : <Navbar /> }
       
       <div className="container mt-5 text-center">
         <h2>Bienvenido al Dashboard</h2>
