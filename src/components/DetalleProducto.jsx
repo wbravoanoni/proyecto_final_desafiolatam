@@ -16,7 +16,7 @@ const DetalleProducto = () => {
   return (
     <div className="row py-5">
       {/* Columna de Filtros */}
-      <div className="col-3">
+      {/*<div className="col-3">
         <h4>Filtros</h4>
         <div className="form-group text-start ">
           <label htmlFor="genero" className="pb-2 fw-bolder">
@@ -59,10 +59,10 @@ const DetalleProducto = () => {
           </select>
         </div>
         <button className="mt-3 btn btn-dark btn-block px-5">Filtrar</button>
-      </div>
+      </div>*/}
 
       {/* Columna de Productos */}
-      <div className="col-9">
+      <div className="col-12">
         <div className="row pb-3">
             <div className="col-8">
             </div>
